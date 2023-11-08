@@ -41,14 +41,13 @@ try {
     ix = i$;
     out += String.fromCharCode(buffer[ix]);
   }
-  incore_stats = mmap.incore(buffer); // Returns tuple of [ unmapped-pages-count, mapped-pages-count ]
+  incore_stats = mmap.incore(buffer);
   assert.equal(incore_stats[0], 0);
   assert.equal(incore_stats[1], 2);
 } catch (e$) {
   e = e$;
   if (e.message !== 'mincore() not implemented') {
-    // assert(false, "Shit happened while reading from buffer");
-    console.error("Error while reading from buffer:", e);
+    say("Error while reading from buffer:", e);
   }
 }
 try {
